@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+
+        <!-- Enable the second-level cache -->
+        <property name="hibernate.cache.region.factory_class"> org.redisson.hibernate.RedissonRegionFactory </property>
+
+
+        <!-- 2nd level cache activation -->
+        <property name="hibernate.cache.use_second_level_cache"> false</property>
+        <property name="hibernate.cache.use_query_cache"> false </property>
+
+
+        <!-- Redisson can fallback on database if Redis cache is unavailable -->
+        <property name="hibernate.cache.redisson.fallback"> true </property>
+
+        <!-- Redisson YAML config (located in filesystem or classpath) -->
+        <property name="hibernate.cache.redisson.config"> redisson.yaml </property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Party"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Aventurero"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Tactica"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Atributos"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Estadistica"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Pelea"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Habilidad"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Curar"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Ataque"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.AtaqueMagico"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Meditar"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Defensa"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.Clase"/>
+        <mapping class="ar.edu.unq.epers.tactics.modelo.AtributoDeFormacion"/>
+    </session-factory>
+</hibernate-configuration>
